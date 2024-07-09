@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Zetta.BD.Data
 {
-    public class EntityBase: IEntityBase
-
+    internal interface IEntityBase
     {
-        public int Id { get; set; }
-
-        public bool Activo { get; set; }
-
+        bool Activo { get; set; }
     }
 }
