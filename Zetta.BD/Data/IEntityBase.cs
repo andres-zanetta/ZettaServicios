@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zetta.BD.Data
 {
-    internal interface IEntityBase
+    public interface IEntityBase
     {
         bool Activo { get; set; }
     }
