@@ -10,7 +10,6 @@ namespace Zetta.BD.Data.Entity
     public class Presupuesto
     {
         public int PresupuestoID { get; set; }
-        public string Titulo { get; set; }
         public DateTime FechaEvento { get; set; }
         public string Direccion { get; set; }
         public string OrganizadoPor { get; set; }

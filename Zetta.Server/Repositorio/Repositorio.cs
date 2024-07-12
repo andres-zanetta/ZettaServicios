@@ -8,5 +8,6 @@ namespace Zetta.Server.Repositorio//comunico la BD
         where Z : class,IEntityBase
 
     {
+       private readonly Context _context;
     }
 }

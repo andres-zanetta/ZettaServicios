@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Zetta.Server.Repositorio
 {
-    public class PresupuestoRepositorio: Repositorio<Presupuesto>, ITPresupuesto
+    public class PresupuestoRepositorio: Repositorio<Presupuesto>, ITPresupuestoRepositorio
     {
         private readonly Context context;
 

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace Zetta.BD.Data
 {
     public class EntityBase: IEntityBase
-
     {
         public int Id { get; set; }
 
