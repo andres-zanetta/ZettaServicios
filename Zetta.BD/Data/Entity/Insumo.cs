@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Zetta.BD.Data.Entity
 {
-    public class Cliente : EntityBase
+    public class Insumo : EntityBase
     {
-        public string Nombre {get; set;}
+        public string Nombre { get; set; }
+        public decimal Precio { get; set; }
 
-        public string Direccion { get; set;}
 
     }
 }

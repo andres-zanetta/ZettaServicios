@@ -7,8 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Zetta.BD.Data.Entity
 {
-    public class Transacciones
-
+    public class Transaccion
     {
         public int TransaccionId { get; set; }
         public DateTime Fecha { get; set; }
