@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zetta.BD.Data.Entity.Acciones
 {
-    public class Presupuestar:EntityBase
+    public class Controlar:EntityBase
     {
 
     }
