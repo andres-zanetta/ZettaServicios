@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Zetta.BD.Data.Entity;
 using Zetta.BD.Data.Entity.Acciones;
 
-namespace Zetta.BD.Data.Entity
+namespace Zetta.BD.Data
 {
     public class Context : DbContext
     {

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Zetta.BD.Data;
 using Zetta.BD.Data.Entity;
 using Zetta.Server.Repositorio;
+using Zetta.BD.Shared.DTO;
 
 namespace Zetta.Server.Controllers
 {
@@ -20,22 +21,34 @@ namespace Zetta.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Presupuesto>>> Get()
         {
-            return await repositorio.Select();
+            return await repositorio.SelectByCod();
 
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Presupuesto>>Get(int id)
+        {
+            var zetta = await repositorio.SelectById(id);
+            if (zetta==null)
+            {
+                return NotFound();
+
+            }
+            return zetta;
+        }
+
         [HttpPost]
-        public async Task<ActionResult<List<Presupuesto>>> Post(Presupuesto entidad)
+        public async Task<ActionResult<List<Presupuesto>>>Post(Presupuesto entidad)
         {
             try
             {
                 Context.Presupuesto.Add(entidad);
 
             }
-            catch (Exception)
+            catch (Exception z)
             {
 
-                throw;
+                return BadRequest(z.Message);
             }
         }
     }
