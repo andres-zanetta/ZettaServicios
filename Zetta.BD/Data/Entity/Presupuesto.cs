@@ -14,8 +14,9 @@ namespace Zetta.BD.Data.Entity
         [Required(ErrorMessage = "El código del presupuesto es obligatorio.")]
 
         public int PresupuestoID { get; set; }
+        public string Insumos {  get; set; }
         public DateTime FechaEvento { get; set; }
-        public string Direccion { get; set; }
+        public string Direccion { get; set; } 
         public decimal PrecioFinal { get; set; }
 
     }
