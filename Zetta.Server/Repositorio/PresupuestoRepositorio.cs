@@ -1,6 +1,7 @@
 ﻿using Zetta.BD.Data.Entity;
 using Zetta.BD.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace Zetta.Server.Repositorio
@@ -18,6 +19,7 @@ namespace Zetta.Server.Repositorio
         {
             Presupuesto? z = await context.Presupuestos
                             .FirstOrDefaultAsync(x => x.Codigo == codigo);
+            return z;
         }
     }
 }
