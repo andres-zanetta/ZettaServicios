@@ -13,20 +13,26 @@ namespace Zetta.BD.Data
     {
         public DbSet<Presupuesto> Presupuestos { get; set; }
 
+        public DbSet<Cliente> Clientes { get; set; }
+
+        public DbSet<Insumo> Insumos { get; set; }
+
+        public DbSet<Transaccion> Transacciones { get;set; }  
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //defino una variable, que va a ser una lista de todas las entidades que tengan FK y se borrren en cascada
+            
             var cascadeFKs = modelBuilder.Model.G­etEntityTypes()
-                                          .SelectMany(a => a.GetForeignKeys())//seleccione alguna CF
+                                          .SelectMany(a => a.GetForeignKeys())
                                           .Where(fk => !fk.IsOwnership
                                                        && fk.DeleteBehavior == DeleteBehavior.Casca­de);
             foreach (var fk in cascadeFKs)
             {
-                fk.DeleteBehavior = DeleteBehavior.Restr­ict;//restringe todas las claves foraneas para evitar el borrado de las mismas cuando borre en cascada//
+                fk.DeleteBehavior = DeleteBehavior.Restr­ict;
             }
 
-            base.OnModelCreating(modelBuilder);//esta linea ejecuta toda la creacion de toda la bd segun la clase de la cual hereda "db context" 
+            base.OnModelCreating(modelBuilder);
         }
 
     }
