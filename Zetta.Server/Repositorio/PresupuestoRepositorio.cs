@@ -17,7 +17,7 @@ namespace Zetta.Server.Repositorio
 
         public async Task<Presupuesto> SelectByCod(string codigo)
         {
-            Presupuesto? z = await context.Presupuestos
+            Presupuesto z = await context.Presupuestos
                             .FirstOrDefaultAsync(x => x.Codigo == codigo);
             return z;
         }
