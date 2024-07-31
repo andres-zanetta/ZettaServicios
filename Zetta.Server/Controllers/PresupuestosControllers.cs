@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Zetta.BD.Data;
 using Zetta.BD.Data.Entity;
 using Zetta.Server.Repositorio;
-using Zetta.BD.Shared.DTO;
+using Zetta.Shared.DTO;
 
 namespace Zetta.Server.Controllers
 {
@@ -12,10 +13,14 @@ namespace Zetta.Server.Controllers
     public class PresupuestosController : ControllerBase
     {
         private readonly PresupuestoRepositorio repositorio;
+        private readonly IMapper mapper;
 
-        public PresupuestosController(ITPresupuestoRepositorio respositorio)
+        //private readonly IMapper maper;
+
+        public PresupuestosController(ITPresupuestoRepositorio respositorio, IMapper mapper)
         {
             this.repositorio = repositorio;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -26,10 +31,10 @@ namespace Zetta.Server.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Presupuesto>>Get(int id)
+        public async Task<ActionResult<Presupuesto>> Get(int id)
         {
             var zetta = await repositorio.SelectById(id);
-            if (zetta==null)
+            if (zetta == null)
             {
                 return NotFound();
 
@@ -37,13 +42,37 @@ namespace Zetta.Server.Controllers
             return zetta;
         }
 
+        [HttpGet("GetByCod/{cod}")]
+
+        public async Task<ActionResult<Presupuesto>> GetbyCod(string cod)
+        {
+            Presupuesto? zetta = await repositorio.SelectByCod(cod);
+
+            if (zetta == null)
+            {
+                return NotFound();
+            }
+            return zetta;
+        }
+
+
+        [HttpGet("Existe/{id:int}")]
+        public async Task<ActionResult<bool>> Existe(int id)
+        {
+            var existe = await repositorio.Existe(id);
+            return existe;
+        }
+
         [HttpPost]
-        public async Task<ActionResult<List<Presupuesto>>>Post(Presupuesto entidad)
+
+        public async Task<ActionResult<int>>Post(CrearPresupuestoDTO entidadDTO)
         {
             try
             {
-                Context.Presupuesto.Add(entidad);
 
+             Presupuesto entidad = mapper.Map<Presupuesto>(entidadDTO);
+             return await repositorio.Insert(entidad);
+               
             }
             catch (Exception z)
             {
