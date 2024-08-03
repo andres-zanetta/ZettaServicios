@@ -10,14 +10,14 @@ namespace Zetta.Server.Controllers
 {
     [ApiController]
     [Route("api/Presupuesto")]
-    public class PresupuestosController : ControllerBase
+    public class PresupuestosControllers : ControllerBase
     {
         private readonly PresupuestoRepositorio repositorio;
         private readonly IMapper mapper;
 
         //private readonly IMapper maper;
 
-        public PresupuestosController(ITPresupuestoRepositorio respositorio, IMapper mapper)
+        public PresupuestosControllers(ITPresupuestoRepositorio respositorio, IMapper mapper)
         {
             this.repositorio = repositorio;
             this.mapper = mapper;
@@ -26,14 +26,14 @@ namespace Zetta.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Presupuesto>>> Get()
         {
-            return await repositorio.SelectByCod();
+            return await repositorio.Select();
 
         }
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Presupuesto>> Get(int id)
         {
-            var zetta = await repositorio.SelectById(id);
+            Presupuesto? zetta = await repositorio.SelectById(id);
             if (zetta == null)
             {
                 return NotFound();
@@ -80,5 +80,35 @@ namespace Zetta.Server.Controllers
                 return BadRequest(z.Message);
             }
         }
+
+        //**/*//***//////**/*
+         public async Task<ActionResult> Put(int id, [FromBody] Presupuesto entidad)
+         {
+            if (id != entidad.Id)
+            {
+                return BadRequest("Datos Incorrectos");
+            }
+            var zetta = await repositorio.SelectById(id);
+
+            if (zetta== null)
+            {
+                return NotFound("No existe el tipo de presupuesto buscado.");
+            }
+
+            zetta.Codigo = entidad.Codigo;
+            zetta.Nombre = entidad.Nombre;
+            zetta.Activo = entidad.Activo;
+
+            try
+            {
+                await repositorio.Update(id, zetta);
+                return Ok();
+            }
+            catch (Exception z)
+            {
+                return BadRequest(z.Message);
+            }
+         }
+
     }
 }

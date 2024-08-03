@@ -1,6 +1,6 @@
 ﻿namespace Zetta.Server.Repositorio
 {
-    public interface ITClienteRepositorio
+    public interface IPClienteRepositorio
     {
     }
 }

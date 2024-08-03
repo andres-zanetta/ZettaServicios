@@ -2,7 +2,7 @@
 
 namespace Zetta.Server.Repositorio
 {
-    public interface ITPresupuestoRepositorio : IRepositorio<Presupuesto>
+    public interface IPresupuestoRepositorio : IRepositorio<Presupuesto>
     {
         Task<Presupuesto> SelectByCod(string cod);
     }

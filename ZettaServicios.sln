@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zetta.BD", "Zetta.BD\Zetta.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "notas", "notas", "{1111EE6B-F563-4EAE-92F2-9A0B171CBEE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zetta.Shared", "ClassLibrary1\Zetta.Shared.csproj", "{17726F95-93EA-43C7-A896-3A17762ADC44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zetta.Shared", "ClassLibrary1\Zetta.Shared.csproj", "{17726F95-93EA-43C7-A896-3A17762ADC44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
