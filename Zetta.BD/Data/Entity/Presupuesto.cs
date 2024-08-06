@@ -12,12 +12,17 @@ namespace Zetta.BD.Data.Entity
     public class Presupuesto : EntityBase
     {
         [Required(ErrorMessage = "El código del presupuesto es obligatorio.")]
-
+        [MaxLength(4,ErrorMessage="Maximo numero de caracters {1}" )]
         public string PresupuestoID { get; set; }
+
+        [Required(ErrorMessage ="")]
         public string Insumos {  get; set; }
         public DateTime FechaEvento { get; set; }
         public string Direccion { get; set; } 
         public decimal PrecioFinal { get; set; }
+
+        public List<Cliente> Clientes { get; set; }
+
 
     }
         // Método para calcular el total del presupuesto

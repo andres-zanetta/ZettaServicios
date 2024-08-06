@@ -17,7 +17,7 @@ namespace Zetta.Server.Controllers
 
         //private readonly IMapper maper;
 
-        public PresupuestosControllers(ITPresupuestoRepositorio respositorio, IMapper mapper)
+        public PresupuestosControllers(IPresupuestoRepositorio respositorio, IMapper mapper)
         {
             this.repositorio = repositorio;
             this.mapper = mapper;

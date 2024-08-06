@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary1\Zetta.Shared.csproj" />
     <ProjectReference Include="..\Zetta.BD\Zetta.BD.csproj" />
+    <ProjectReference Include="..\Zetta.Shared\Zetta.Shared.csproj" />
   </ItemGroup>
 
 </Project>
