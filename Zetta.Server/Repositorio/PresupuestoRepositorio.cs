@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Zetta.Server.Repositorio
 {
-    public class PresupuestoRepositorio: Repositorio<Presupuesto>, ITPresupuestoRepositorio
+    public class PresupuestoRepositorio: Repositorio<Presupuesto>, IPresupuestoRepositorio
     {
         private readonly Context context;
 
